@@ -755,7 +755,7 @@ class CSS extends Minify
         // not in things like `calc(3px + 2px)`, shorthands like `3px -2px`, or
         // selectors like `div.weird- p`
         $pseudos = array('nth-child', 'nth-last-child', 'nth-last-of-type', 'nth-of-type');
-        $content = preg_replace('/:(' . implode('|', $pseudos) . ')\(\s*([+-]?)\s*(.+?)\s*([+-]?)\s*(.*?)\s*\)/', ':$1($2$3$4$5)', $content);
+        $content = preg_replace('/:(' . implode('|', $pseudos) . ')\(\s*([+-]?)\s*(.+?)\s*([+-]?)\s*(.*?)\s*(of\s+[^\)]+)?\s*\)/', ':$1($2$3$4$5$6)', $content);
 
         // remove semicolon/whitespace followed by closing bracket
         $content = str_replace(';}', '}', $content);
